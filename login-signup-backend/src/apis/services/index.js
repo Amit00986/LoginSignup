@@ -3,6 +3,13 @@ const LoginModel = require('../models/index');
 const loginPage = async (data) => {
     try {
         console.log('+++++++++++++++', data);
+        const { name, password, email } = data;
+        const findData = await LoginModel.findOne({
+            name: name, password: password, email: email
+        });
+        if (findData) {
+            return ('Data is Already present');
+        }
         const saveDetails = await LoginModel.create(data);
         return saveDetails;
     } catch (error) {
