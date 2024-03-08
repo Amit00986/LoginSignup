@@ -13,12 +13,19 @@ const LoginSignup = () => {
         name: "",
         password: "",
         email: ""
-    })
+    });
     const notifySuccess = () => {
         toast.success('Data successfully saved!', {
-            position: toast.POSITION.TOP_RIGHT
+            position: "top-right"
         });
     };
+
+    const notifyError = (errorMessage) => {
+        toast.error(errorMessage, {
+            position: "top-right"
+        });
+    };
+
     return (
         <div className='conatiner'>
             <div className='header'>
@@ -57,6 +64,7 @@ const LoginSignup = () => {
                         })
                         .catch(error => {
                             console.error('Error:', error);
+                            notifyError()
                         })
                 }}>Sign Up</div>
                 <div className={action === 'Sign Up' ? "submit gray" : "submit"} onClick={() => {
