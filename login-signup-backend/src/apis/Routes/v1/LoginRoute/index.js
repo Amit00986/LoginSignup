@@ -8,7 +8,15 @@ router.post('/loginPage', async (req, res) => {
     try {
         const data = await LoginController.loginPage(req, res);
     } catch (error) {
-        throw new Error('error in creating Address Details');
+        throw new Error('error in creating login');
+    }
+});
+
+router.get('/user/deatisl/:id', async (req, res) => {
+    try {
+        const data = await LoginController.getUserDetails(req, res);
+    } catch (error) {
+        throw new Error('error in getting Details');
     }
 });
 

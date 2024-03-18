@@ -17,6 +17,17 @@ const loginPage = async (data) => {
     };
 };
 
+const getUserDetails = async (userId) => {
+    try {
+        const data = await LoginModel.findById(userId);
+        return data;
+    } catch (error) {
+        throw new Error('while getting data save there is an error');
+    }
+};
+
+
 module.exports = {
-    loginPage
+    loginPage,
+    getUserDetails
 }
